@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  namenode:
+    image: hadoop:3.2.1
+    container_name: namenode
+    hostname: namenode
+    command: ["/bin/bash","-c","/namenode.sh /root/hdfs/name /root/hdfs/data"]
+    volumes:
+      - ./core-site.xml:/opt/hadoop/etc/hadoop/core-site.xml
+      - ./hadoop-env.sh:/opt/hadoop/etc/hadoop/hadoop-env.sh
+      - ./hdfs-site.xml:/opt/hadoop/etc/hadoop/hdfs-site.xml
+      - ./yarn-site.xml:/opt/hadoop/etc/hadoop/yarn-site.xml
+    ports:
+      - 49000:9000
+      - 49870:9870
+
+  datanode:
+    image: hadoop:3.2.1
+    container_name: datanode
+    hostname: datanode
+    command: ["/bin/bash","-c","/opt/hadoop/bin/hdfs datanode"]
+    depends_on:
+      - namenode
+    volumes:
+      - ./core-site.xml:/opt/hadoop/etc/hadoop/core-site.xml
+      - ./hadoop-env.sh:/opt/hadoop/etc/hadoop/hadoop-env.sh
+      - ./hdfs-site.xml:/opt/hadoop/etc/hadoop/hdfs-site.xml
+      - ./yarn-site.xml:/opt/hadoop/etc/hadoop/yarn-site.xml
