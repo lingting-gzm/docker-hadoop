@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+    <property>
+        <name>dfs.replication</name>
+        <value>2</value>
+    </property>
+    <property>
+        <name>dfs.namenode.name.dir</name>
+        <value>/root/hdfs/name</value>
+    </property>
+    <property>
+        <name>dfs.namenode.data.dir</name>
+        <value>/root/hdfs/data</value>
+    </property>
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>/root/data</value>
+    </property>
+    <property>
+        <name>dfs.nameservices</name>
+        <value>ns1</value>
+    </property>
+    <!-- rpc 通讯地址 -->
+    <property>
+        <name>dfs.namenode.rpc-address.ns1</name>
+        <value>namenode:9000</value>
+    </property>
+    <!-- http 通讯地址 -->
+    <property>
+        <name>dfs.namenode.http-address.ns1</name>
+        <value>namenode:9870</value>
+    </property>
+    <!-- 配置隔离机制方法.多个机制用换行分割 -->
+    <property>
+        <name>dfs.ha.fencing.methods</name>
+        <value>
+            sshfence
+            <!-- shell(/bin/*.sh) 如果 使用shell 脚本,将/bin/*.sh 替换成 脚本位置 -->
+        </value>
+    </property>
+    <!-- 使用 sshfence 隔离机制需要使用ssh免密登录 -->
+    <property>
+        <name>dfs.ha.fencing.ssh.private-key-files</name>
+        <value>/root/.ssh/id_rsa</value>
+    </property>
+    <!-- 配置 sshfence 机制超时时间 -->
+    <property>
+        <name>dfs.ha.fencing.ssh.connect-timeout</name>
+        <value>30000</value>
+    </property>
+</configuration>
