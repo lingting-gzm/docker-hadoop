@@ -33,5 +33,5 @@ gyGb99+Cryq2DlZkQ475R8/19IhGD9IZTLn95X74r61N3+8XUNOpAA==\n\
     > ~/.ssh/id_rsa.pub && cat ~/.ssh/id_rsa.pub > ~/.ssh/authorized_keys &&\
   echo "#hadoop \nexport HADOOP_HOME=/opt/hadoop \nexport PATH=\$HADOOP_HOME/bin:\$PATH" >> /etc/profile && \
   echo "source /etc/profile" >> ~/.bashrc && \
-  echo "#!/bin/bash\nmkdir -p \$1 \nmkdir -p \$2 \nif [ \"\`ls -A \$1\`\" == \"\" ]; then \n  echo 'format '\$1' '\$2 \n  /opt/hadoop/bin/hdfs namenode -format \nfi\n/opt/hadoop/bin/hdfs namenode" > /init.sh && \
-  chmod +rwx /init.sh
+  echo "#!/bin/bash\nmkdir -p \$1 \nmkdir -p \$2 \nif [ \"\`ls -A \$1\`\" == \"\" ]; then \n  echo 'format '\$1' '\$2 \n  /opt/hadoop/bin/hdfs namenode -format \nfi\n/opt/hadoop/bin/hdfs namenode" > /namenode.sh && \
+  chmod +rwx /namenode.sh
