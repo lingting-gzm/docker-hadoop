@@ -2,7 +2,7 @@ version: "3"
 
 services:
   namenode:
-    image: hadoop:3.2.1
+    image: lingting2020/hadoop:3.2.1
     container_name: namenode
     hostname: namenode
     command: ["/bin/bash","-c","/namenode.sh /root/hdfs/name /root/hdfs/data"]
@@ -16,7 +16,7 @@ services:
       - 49870:9870
 
   datanode:
-    image: hadoop:3.2.1
+    image: lingting2020/hadoop:3.2.1
     container_name: datanode
     hostname: datanode
     command: ["/bin/bash","-c","/opt/hadoop/bin/hdfs datanode"]
