@@ -31,6 +31,7 @@ gyGb99+Cryq2DlZkQ475R8/19IhGD9IZTLn95X74r61N3+8XUNOpAA==\n\
 -----END RSA PRIVATE KEY-----" > ~/.ssh/id_rsa && \
  echo -e "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC/c5xBpZcGFFdmjDRAlJN2+RkTynL0ttDgSfLN7PJ7BY/Jr0vs+9BeidoUAFgmGQKzMc7Amool75nxGW/n6iyFoXZoqNoI/WPjauyFkp6vBbNtW/K1qy+I5YZaMXUe+idiNvGmcg6Q3ZwwF1/JBHPXizspmBWAPRBD9XDoj53degu8pec8w0cG6TdzMuUY+5NhsHgrsWr3xPpc6sNxC6VCBEqbeWpH7LGidVNyGgntNrVUM+RTfP6rNyabZxTnTQPh+9BOLZi1qT81m+LkW812kPD0B4V3bIpfDw02yoTNFHarJCUwQ9LjlyvdMU2PAQZgo4K728LfhbmtVRulW8SX moppo@storm1" \
     > ~/.ssh/id_rsa.pub && cat ~/.ssh/id_rsa.pub > ~/.ssh/authorized_keys &&\
-  mv /opt/hadoop-3.2.1 /opt/hadoop && \
   echo "#hadoop \nexport HADOOP_HOME=/opt/hadoop \nexport PATH=\$HADOOP_HOME/bin:\$PATH" >> /etc/profile && \
-  echo "source /etc/profile" >> ~/.bashrc
+  echo "source /etc/profile" >> ~/.bashrc && \
+  echo "#!/bin/bash\nmkdir -p \$1 \nmkdir -p \$2 \nif [ \"\`ls -A \$1\`\" == \"\" ]; then \n  echo 'format '\$1' '\$2 \n  /opt/hadoop/bin/hdfs namenode -format \nfi\n/opt/hadoop/bin/hdfs namenode" > /init.sh && \
+  chmod +rwx /init.sh
