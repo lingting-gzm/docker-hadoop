@@ -1,6 +1,6 @@
 FROM openjdk:8
 
-ADD hadoop.tar.gz /opt
+ADD hadoop /opt/hadoop
 
 RUN mkdir ~/.ssh && echo -e "-----BEGIN RSA PRIVATE KEY-----\n\
 MIIEpAIBAAKCAQEAv3OcQaWXBhRXZow0QJSTdvkZE8py9LbQ4EnyzezyewWPya9L\n\
