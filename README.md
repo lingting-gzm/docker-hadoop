@@ -11,4 +11,7 @@ ADD hadoop /opt/hadoop
 > 它由一个 namenode 和一个 datanode 组成
 >
 # demo2
-> demo2 文件存放的是 多datanode节点的示例
+> demo2 文件夹存放的是 多datanode节点的示例
+
+# demo3
+> demo3 文件夹存放的是 多data节点resourceManager 示例

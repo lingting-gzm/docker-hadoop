@@ -1,0 +1,52 @@
+version: "3"
+
+services:
+  namenode:
+    image: lingting2020/hadoop:3.2.1
+    container_name: namenode
+    network_mode: host
+    command: ["/bin/bash","-c","/namenode.sh /root/hdfs/name /root/hdfs/data"]
+    volumes:
+      - ./core-site.xml:/opt/hadoop/etc/hadoop/core-site.xml
+      - ./hadoop-env.sh:/opt/hadoop/etc/hadoop/hadoop-env.sh
+      - ./hdfs-site.xml:/opt/hadoop/etc/hadoop/hdfs-site.xml
+      - ./yarn-site.xml:/opt/hadoop/etc/hadoop/yarn-site.xml
+
+  resourceManager:
+    image: lingting2020/hadoop:3.2.1
+    container_name: resourceManager
+    network_mode: host
+    command: ["/bin/bash","-c","/opt/hadoop/bin/yarn resourcemanager"]
+    depends_on:
+      - namenode
+    volumes:
+      - ./core-site.xml:/opt/hadoop/etc/hadoop/core-site.xml
+      - ./hadoop-env.sh:/opt/hadoop/etc/hadoop/hadoop-env.sh
+      - ./hdfs-site.xml:/opt/hadoop/etc/hadoop/hdfs-site.xml
+      - ./yarn-site.xml:/opt/hadoop/etc/hadoop/yarn-site.xml
+
+  datanode1:
+    image: lingting2020/hadoop:3.2.1
+    container_name: datanode1
+    network_mode: host
+    command: ["/bin/bash","-c","/opt/hadoop/bin/hdfs datanode"]
+    depends_on:
+      - namenode
+    volumes:
+      - ./core-site.xml:/opt/hadoop/etc/hadoop/core-site.xml
+      - ./hadoop-env.sh:/opt/hadoop/etc/hadoop/hadoop-env.sh
+      - ./hdfs-site-datanode1.xml:/opt/hadoop/etc/hadoop/hdfs-site.xml
+      - ./yarn-site.xml:/opt/hadoop/etc/hadoop/yarn-site.xml
+
+  datanode2:
+    image: lingting2020/hadoop:3.2.1
+    container_name: datanode2
+    network_mode: host
+    command: ["/bin/bash","-c","/opt/hadoop/bin/hdfs datanode"]
+    depends_on:
+      - namenode
+    volumes:
+      - ./core-site.xml:/opt/hadoop/etc/hadoop/core-site.xml
+      - ./hadoop-env.sh:/opt/hadoop/etc/hadoop/hadoop-env.sh
+      - ./hdfs-site-datanode2.xml:/opt/hadoop/etc/hadoop/hdfs-site.xml
+      - ./yarn-site.xml:/opt/hadoop/etc/hadoop/yarn-site.xml

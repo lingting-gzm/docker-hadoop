@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+    <property>
+        <name>yarn.nodemanager.aux-services</name>
+        <value>mapreduce.shuffle</value>
+    </property>
+
+    <!-- 开启 rm 高可用 -->
+    <property>
+        <name>yarn.resourcemanager.recovery.enabled</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.store.class</name>
+        <value>org.apache.hadoop.yarn.server.resourcemanager.recovery.FileSystemRMStateStore</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.scheduler.class</name>
+        <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.fs.state-store.uri</name>
+        <value>/rmstate</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.system-metrics-publisher.enabled</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.hostname</name>
+        <value>192.168.1.3</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.scheduler.address</name>
+        <value>192.168.1.3:48030</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.resource-tracker.address</name>
+        <value>192.168.1.3:48031</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.address</name>
+        <value>192.168.1.3:48032</value>
+    </property>
+    <property>
+        <name>mapred.map.output.compress.codec</name>
+        <value>org.apache.hadoop.io.compress.SnappyCodec</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.webapp.address</name>
+        <value>192.168.1.3:48088</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.webapp.https.address</name>
+        <value>192.168.1.3:48090</value>
+    </property>
+</configuration>
