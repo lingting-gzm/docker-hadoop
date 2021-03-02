@@ -1,7 +1,7 @@
 # docker-hadoop
 这个 Dockerfile 出现的目的，是我想要一个贴合原版的hadoop容器
 # 使用的项目
-https://gitee.com/lingting2019_sunlisten_gzm/bd
+https://gitee.com/sunlisten/bd
 # 注释
 ```
 ADD hadoop /opt/hadoop
